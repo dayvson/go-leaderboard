@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Go-leaderboard : A leaderboard library written in Go using redis " />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Go-leaderboard</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/dayvson/go-leaderboard">View on GitHub</a>
+
+          <h1 id="project_title">Go-leaderboard</h1>
+          <h2 id="project_tagline">A leaderboard library written in Go using redis </h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/dayvson/go-leaderboard/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/dayvson/go-leaderboard/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="leaderboard" class="anchor" href="#leaderboard"><span class="octicon octicon-link"></span></a>Leaderboard</h1>
+
+<p>A leaderboard written in <a href="http://golang.org/">Go</a> using <a href="http://redis.io/">Redis</a> database.</p>
+
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Create multiple Leaderboards by name </li>
+<li>You can rank a member with and the leaderboard will be updated automatically</li>
+<li>Remove a member from a specific Leaderboard</li>
+<li>Get total of users in a specific Leaderboard and also how many pages it has.</li>
+<li>Get leaders on any page</li>
+<li>Get an "Around Me" leaderboard for a member</li>
+<li>Get rank and score for an arbitrary list of members (e.g. friends)<br>
+</li>
+</ul><h2>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How to use</h2>
+
+<p>Create a new leaderboard or attach to an existing leaderboard named 'highscores': 
+    highScore := NewLeaderboard("highscores", 10)
+    //return a Leaderboard: Leaderboard{name:"highscores", pageSize:10}</p>
+
+<p>Adding members to highscores using RankMember(username, score):</p>
+
+<pre>
+    highScore.RankMember("dayvson", 9876)
+    highScore.RankMember("arthur", 2000123)
+    highScore.RankMember("felipe", 100000)
+</pre>
+
+<p>You can call RankMember with the same member and the leaderboard will be updated automatically:</p>
+
+<pre>
+    highScore.RankMember("dayvson", 7481523)
+    //return an user: User{name:"dayvson", score:7481523, rank:1}
+</pre>
+
+<p>Getting a total members on highscores:</p>
+
+<pre>
+    highScore.TotalMembers()
+    //return an int: 3
+</pre>
+
+<p>Getting the rank from a member:</p>
+
+<pre>
+    highScore.GetRank("dayvson")
+    //return an int: 1
+</pre>
+
+<p>Getting a member from a rank position:</p>
+
+<pre>
+    highScore.GetMemberByRank(2)
+    //return an user: User{name:"felipe", score:100000, rank:2}
+</pre>
+
+<p>Getting members around you:</p>
+
+<pre>
+    highScore.GetAroundMe("felipe")
+    //return an array of users around you [pageSize]User:
+</pre>
+
+<p>Getting Leaders by page:</p>
+
+<pre>
+    highScore.GetLeaders(1)
+    //return an array of users with highest score in a first page (you can specify any page): [pageSize]User
+</pre>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Install Leaderboard using the "go get" command:</p>
+
+<pre><code>go get github.com/dayvson/go-leaderboard
+</code></pre>
+
+<h2>
+<a name="testing" class="anchor" href="#testing"><span class="octicon octicon-link"></span></a>Testing</h2>
+
+<pre><code>make test
+</code></pre>
+
+<h2>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li>Go language distribution</li>
+<li>redigo (github.com/garyburd/redigo/redis)</li>
+</ul><h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ul>
+<li>Contributions are welcome.</li>
+<li>Take care to maintain the existing coding style.</li>
+<li>Add unit tests for any new or changed functionality.</li>
+<li>Open a pull request :)</li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>© 2013, Maxwell Dayvson da Silva. Released under the <a href="LICENSE">MIT License</a>.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Go-leaderboard maintained by <a href="https://github.com/dayvson">dayvson</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
