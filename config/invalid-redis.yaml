@@ -1,0 +1,9 @@
+healthcheck:
+  workingText: WORKING
+
+redis:
+  url: redis://localhost:9473/0
+  connectionTimeout: 1
+
+api:
+  maxReturnedMembers: 2000

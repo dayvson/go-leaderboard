@@ -6,6 +6,8 @@
 # Folders
 _obj
 _test
+_build
+vendor
 
 # Architecture specific extensions/prefixes
 *.[568vq]
@@ -20,3 +22,9 @@ _cgo_export.*
 _testmain.go
 
 *.exe
+
+*.coverprofile
+vendor/
+/bin
+bench-data/
+.venv

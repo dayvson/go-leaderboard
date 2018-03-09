@@ -1,0 +1,17 @@
+healthcheck:
+  workingText: WORKING
+
+redis:
+  url: redis://localhost:1212/0
+  connectionTimeout: 200
+
+api:
+  maxReturnedMembers: 2000
+  maxReadBufferSize: 80240
+
+newrelic:
+  key: ""
+
+worker:
+  expirationCheckInterval: 60s
+  expirationLimitPerRun: 1000

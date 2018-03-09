@@ -1,0 +1,16 @@
+healthcheck:
+  workingText: WORKING
+
+redis:
+  url: redis://localhost:1234/0
+  connectionTimeout: 200
+
+api:
+  maxReturnedMembers: 2000
+
+newrelic:
+  key: ""
+
+worker:
+  expirationCheckInterval: 1s
+  expirationLimitPerRun: 100
