@@ -1,0 +1,23 @@
+healthcheck:
+  workingText: WORKING
+
+redis:
+  host: localhost
+  port: 1224
+  password: ""
+  db: 0
+  connectionTimeout: 200
+
+jaeger:
+  disabled: false
+  samplingProbability: 0.1
+
+newrelic:
+  key: ""
+
+extensions:
+  dogstatsd:
+    host: localhost:8125
+    prefix: podium.
+    tags_prefix: ""
+    rate: 1

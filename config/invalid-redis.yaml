@@ -1,0 +1,23 @@
+healthcheck:
+  workingText: WORKING
+
+redis:
+  host: localhost
+  port: 9473
+  password: ""
+  db: 0
+  connectionTimeout: 1
+
+jaeger:
+  disabled: false
+  samplingProbability: 1.0
+
+api:
+  maxReturnedMembers: 2000
+
+extensions:
+  dogstatsd:
+    host: localhost:8125
+    prefix: podium.
+    tags_prefix: ""
+    rate: 1
